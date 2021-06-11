@@ -4,8 +4,8 @@
   "description": "GraphicsMagick API",
   "main": "app.js",
   "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/MHennelly/static-magick#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "gm": "^1.23.1"
+    "gm": "^1.23.1",
+    "winston": "^3.3.3"
   }
 }
