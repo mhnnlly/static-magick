@@ -1,10 +1,10 @@
+require('dotenv').config()
+const inProduction = process.env.NODE_ENV === "production"
+const port = inProduction ? process.env.PROD_PORT : process.env.DEV_PORT
+
 const app = require('express')()
 const path = require('path')
 const winston = require('winston')
-
-require('dotenv').config()
-const inProduction = process.env.ENV === "production"
-const port = inProduction ? process.env.PROD_PORT : process.env.DEV_PORT
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
@@ -24,10 +24,8 @@ if (!inProduction) {
     }))
 }
 
-
-app.get('/', (req, res) => {
-    res.render('index')
-})
+app.use('/', require('./routes/index'))
+app.use('/magick', require('./routes/magick'))
 
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}`)
