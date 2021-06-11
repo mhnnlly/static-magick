@@ -1,0 +1,22 @@
+{
+  "name": "static-magick",
+  "version": "1.0.0",
+  "description": "GraphicsMagick API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MHennelly/static-magick.git"
+  },
+  "author": "Michael Hennelly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MHennelly/static-magick/issues"
+  },
+  "homepage": "https://github.com/MHennelly/static-magick#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
