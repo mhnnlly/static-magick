@@ -3,11 +3,18 @@ const path = require('path')
 const url = require('url')
 
 const extensions = ['.jpg', '.png', '.jpeg']
+const byteLimit = 10000000 // 10 MB
 
 async function downloadImg (url) {
-    let response = await fetch(url);
-    let blob = await response.blob();
-    return blob
+    try {
+	let response = await fetch(url, {
+	    size: byteLimit
+	});
+	let blob = await response.blob();
+	return blob
+    } catch (err) {
+	return
+    }
 }
 
 exports.magick = async (req, res) => {
@@ -28,6 +35,11 @@ exports.magick = async (req, res) => {
 	return
     }
     imgBlob = await downloadImg(target)
+    if (!imgBlob) {
+	errRes('File Larger Than 10 MB')
+	return
+    }
     imgBuff = await imgBlob.arrayBuffer()
+    res.header('Content-Type', 'image/' + targetExt.substr(1))
     res.send(Buffer.from(imgBuff))
 }
