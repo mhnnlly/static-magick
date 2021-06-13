@@ -2,12 +2,14 @@ require('dotenv').config()
 const inProduction = process.env.NODE_ENV === "production"
 const port = inProduction ? process.env.PROD_PORT : process.env.DEV_PORT
 
-const app = require('express')()
+const express = require('express')
+const app = express()
 const path = require('path')
 const winston = require('winston')
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
+app.use('/public', express.static('public'))
 
 const logger = winston.createLogger({
     level: 'info',
