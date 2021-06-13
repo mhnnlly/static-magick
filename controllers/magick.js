@@ -1,13 +1,15 @@
 const crypto = require('crypto')
 const fetch = require('node-fetch')
+const ftype = require('file-type')
 const fs = require('fs')
 const gm = require('gm')
 const path = require('path')
 const {promisify} = require('util')
 const url = require('url')
 
-const extensions = ['.jpg', '.png', '.jpeg']
-const byteLimit = 10000000 // 10 MB
+const extensions = ['image/jpg', 'image/png', 'image/jpeg']
+const byteLimit = 30 * 1000 * 1000 // 30 MB
+const timeToExpire = 5 * 60 * 1000 // 5 Minutes
 
 const filters = {
     'average': (img, args) => img.average(),
@@ -62,6 +64,17 @@ async function applyFilters (filepath, obj) {
     }
 }
 
+function setExpire (path) {
+    setTimeout(() => {
+	fs.unlink(path, err => {
+	    if (err)
+		console.log(err)
+	})
+    }, timeToExpire)
+}
+
+const writeFile = promisify(fs.writeFile)
+
 exports.magick = async (req, res) => {
     let errRes = (msg) => {
 	res.render('error.ejs', {
@@ -74,20 +87,29 @@ exports.magick = async (req, res) => {
 	errRes('Missing URL Of Source File')
 	return
     }
-    let srcExt = path.extname(src)
-    if (!srcExt || extensions.indexOf(srcExt) === -1) {
-	errRes('Src Must Have Extension jpg/jpeg/png')
-	return
-    }
     let srcpath = path.join(__dirname, '../files/'+hash(src))
     if (!fs.existsSync(srcpath)) {
 	imgResp = await fetchImg(src)
 	if (!imgResp) {
-	    errRes('Either Bad Source URL Or Larger Than 10 MB')
+	    errRes('Bad Source URL')
 	    return
 	}
-	imgBuff = Buffer.from(await imgResp.arrayBuffer())
-	fs.writeFileSync(srcpath, imgBuff)
+	try {
+	    imgBuff = Buffer.from(await imgResp.arrayBuffer())
+	} catch(err) {
+	    errRes('File Size Must Be <30 MB')
+	    return
+	}
+	await writeFile(srcpath, imgBuff)
+	setExpire(srcpath)
+    }
+    let srcMime = (await ftype.fromFile(srcpath)).mime
+    if (extensions.indexOf(srcMime) === -1) {
+	fs.unlink(srcpath, err => {
+	    console.log(err)
+	})
+	errRes('File Type Must Be jpg/jpeg/png')
+	return
     }
     let reqpath = path.join(__dirname, '../files/'+hash(JSON.stringify(queryObj)))
     if (!fs.existsSync(reqpath)) {
@@ -95,11 +117,12 @@ exports.magick = async (req, res) => {
 	img.write(reqpath, err => {
 	    if (err)
 		console.log(err)
-	    res.header('Content-Type', 'image/' + srcExt.substr(1))
+	    res.header('Content-Type', srcMime)//'image/' + srcExt.substr(1))
 	    res.sendFile(reqpath)
+	    setExpire(reqpath)
 	})
     } else {
-	res.header('Content-Type', 'image/' + srcExt.substr(1))
+	res.header('Content-Type', srcMime)//'image/' + srcExt.substr(1))
 	res.sendFile(reqpath)
     }
 }
