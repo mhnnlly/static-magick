@@ -12,8 +12,8 @@ class App extends React.Component {
     }
     
     getParams(state) {
-	const enabledFilters = ['blur', 'border', 'charcoal', 'colorize', 'colors', 'contrast',
-				'cycle', 'edge', 'emboss', 'negative']
+	const enabledFilters = ['blur', 'charcoal', 'colorize', 'colors', 'contrast',
+				'cycle', 'edge', 'emboss', 'negative', 'border']
 
 	const filtMap = {
 	    'blur': (state) => {return state.blurX && state.blurY ?
@@ -61,7 +61,23 @@ class App extends React.Component {
 
     resetFilters() {
 	this.setState({
-	    filterParams: ''
+	    filterParams: '',
+	    blurX: null,
+	    blurY: null,
+	    borderX: null,
+	    borderY: null,
+	    borderColor: null,
+	    charcoal: null,
+	    colorizeR: null,
+	    colorizeG: null,
+	    colorizeB: null,
+	    colors: null,
+	    contrast: null,
+	    cycle: null,
+	    edge: null,
+	    emboss: null,
+	    edges: null,
+	    negative: null
 	})
     }
     
