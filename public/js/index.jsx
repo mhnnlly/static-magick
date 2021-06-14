@@ -8,6 +8,7 @@ class App extends React.Component {
 		      filterParams: '&negative'}
 	this.handleChange = this.handleChange.bind(this)
 	this.handleSubmit = this.handleSubmit.bind(this)
+	this.resetFilters = this.resetFilters.bind(this)
     }
     
     getParams(state) {
@@ -55,6 +56,12 @@ class App extends React.Component {
 	this.setState({
 	    srcURL: this.state.src,
 	    filterParams: this.getParams(this.state)
+	})
+    }
+
+    resetFilters() {
+	this.setState({
+	    filterParams: ''
 	})
     }
     
@@ -220,7 +227,8 @@ class App extends React.Component {
 				<button type='submit' class='btn btn-primary'>Submit</button>
 			    </div>
 			    <div class='col-1 offset-1'>
-				<button type='reset' class='btn btn-secondary'>Reset</button>
+				<button type='reset' class='btn btn-secondary'
+					onClick={this.resetFilters}>Reset</button>
 			    </div>
 			</div>
 		    </form>
