@@ -11,14 +11,29 @@ class App extends React.Component {
     }
     
     getParams(state) {
-	const filters = ['blur']
+	const enabledFilters = ['blur', 'border', 'charcoal', 'colorize', 'colors', 'contrast',
+				'cycle', 'edge', 'emboss', 'negative']
 
 	const filtMap = {
 	    'blur': (state) => {return state.blurX && state.blurY ?
-				'&blur=' + state.blurX + ',' + state.blurY : ''}
+				       '&blur=' + state.blurX + ',' + state.blurY : ''},
+	    'border': (state) => {return state.borderX && state.borderY && state.borderColor ?
+					 '&borderColor=' + state.borderColor +
+				  '&border=' + state.borderX + ',' + state.borderY : ''},
+	    'charcoal': (state) => {return state.charcoalFact ?
+				    '&charcoal=' + state.charcoalFact : ''},
+	    'colorize': (state) => {return state.colorizeR && state.colorizeG && state.colorizeB ?
+				    '&colorize=' + state.colorizeR  + ','
+				    + state.colorizeG + ',' + state.colorizeB : ''},
+	    'colors': (state) => {return state.colors ? '&colors=' + state.colors : ''},
+	    'contrast': (state) => {return state.contrast ? '&contrast=' + state.contrast : ''},
+	    'cycle': (state) => {return state.cycle ? '&cycle=' + state.cycle : ''},
+	    'edge': (state) => {return state.edge ? '&edge=' + state.edge : ''},
+	    'emboss': (state) => {return state.emboss ? '&emboss=' + state.emboss : ''},
+	    'negative': (state) => {return state.negative ? '&negative=' + state.negative : ''}
 	}
 	let res = ''
-	filters.forEach((val, index, array) => {
+	enabledFilters.forEach((val, index, array) => {
 	    res += filtMap[val](state)
 	})
 	return res
@@ -78,26 +93,136 @@ class App extends React.Component {
 			<div class='form-group'>
 			    <label>Static Image Absolute URL:</label>
 			    <input class='form-control' onChange={this.handleChange} type='text'
-				   name='src' placeholder='Ex: https://website.web/image.png'/>
+				   name='src' placeholder='Ex: https://website.web/image.png'
+				   required='true' />
 			    <small class='form-text text-muted'>
 				Images must be less than 30MB and public
 			    </small>
 			</div>
 			<div class='form-group row'>
 			    <label>Blur:</label>
-				<div class='col-3'>
-				    <input class='form-control' onChange={this.handleChange} type='number'
-					   name='blurX' placeholder='Radius'/>
-				</div>
-				<div class='col-3'>
-				    <input class='form-control' onChange={this.handleChange} type='number'
-					   name='blurY' placeholder='Sigma'/>
-				</div>
+			    <div class='col-3'>
+				<input class='form-control' onChange={this.handleChange} type='number'
+				       name='blurX' placeholder='Radius'/>
+			    </div>
+			    <div class='col-3'>
+				<input class='form-control' onChange={this.handleChange} type='number'
+				       name='blurY' placeholder='Sigma'/>
+			    </div>
 			    <small class='form-text text-muted'>
 				Apply Gaussian blur to image with radius and standard deviation
 			    </small>
 			</div>
-			<button type='submit' class='btn btn-primary'>Submit</button>
+			<div class='form-group row'>
+			    <label>Border:</label>
+			    <div class='col-3'>
+				<input class='form-control' onChange={this.handleChange} type='number'
+				       name='borderX' placeholder='Border X-Size'/>
+			    </div>
+			    <div class='col-3'>
+				<input class='form-control' onChange={this.handleChange} type='number'
+				       name='borderY' placeholder='Border Y-Size'/>
+			    </div>
+			    <div class='col-3'>
+				<select class='form-control' onChange={this.handleChange}
+					name='borderColor'>
+				    <option>White</option>
+				    <option>Grey</option>
+				    <option>Black</option>
+				    <option>Blue</option>
+				    <option>Green</option>
+				    <option>Red</option>
+				    <option>Yellow</option>
+				    <option>Brown</option>
+				    <option>Orange</option>
+				    <option>Purple</option>
+				</select>
+			    </div>
+			    <small class='form-text text-muted'>
+				Add a border to the image
+			    </small>
+			</div>
+			<div class='row'>
+			    <div class='form-group col-3'>
+				<label>Charcoal:</label>
+				<input class='form-control' onChange={this.handleChange} type='number'
+				       name='charcoalFact' />
+				<small class='form-text text-muted'>
+				    Apply a charcoal-like filter, intensity factored by input
+				</small>
+			    </div>
+			    <div class='col-9'>
+				<div class='form-group row'>
+				    <label>Colorize:</label>
+				    <div class='col-2'>
+					<input class='form-control' onChange={this.handleChange} type='number'
+					       name='colorizeR' placeholder='R'/>
+				    </div>
+				    <div class='col-2'>
+					<input class='form-control' onChange={this.handleChange} type='number'
+					       name='colorizeG' placeholder='G'/>
+				    </div>
+				    <div class='col-2'>
+					<input class='form-control' onChange={this.handleChange} type='number'
+					       name='colorizeB' placeholder='B'/>
+				    </div>
+				</div>
+			    </div>
+			</div>
+			<div class='row'>
+			    <div class='form-group col-3'>
+				<label>Limit Colors:</label>
+				<input class='form-control' onChange={this.handleChange} type='number'
+				       name='colors'/>
+				<small>
+				    Place an upper-bound on the number of colors for the image
+				</small>
+			    </div>
+			    <div class='form-group col-3'>
+				<label>Contrast:</label>
+				<input class='form-control' onChange={this.handleChange} type='number'
+				       name='contrast' />
+			    </div>
+			    <div class='form-group col-3'>
+				<label>Cycle Colors:</label>
+				<input class='form-control' onChange={this.handleChange} type='number'
+				       name='cycle' />
+				<small>
+				    Cycle the colors by some factor
+				</small>
+			    </div>
+			</div>
+			<div class='row'>
+			    <div class='form-group col-3'>
+				<label>Draw Edges:</label>
+				<input class='form-control' onChange={this.handleChange} type='number'
+				       name='edge' />
+			    </div>
+			    <div class='form-group col-3'>
+				<label>Emboss:</label>
+				<input class='form-control' onChange={this.handleChange} type='number'
+				       name='emboss' />
+			    </div>
+			    <div class='form-group col-3'>
+				<label>Draw Edges:</label>
+				<input class='form-control' onChange={this.handleChange} type='number'
+				   name='edge' />
+			    </div>
+			</div>
+			<div class='form-check'>
+			    <input class='form-check-input' onChange={this.handleChange}
+				   type='checkbox' name='negative' />
+			    <label class='form-check-label'>Negative</label>
+			</div>
+			<br/>
+			<div class='row'>
+			    <div class='col-1'>
+				<button type='submit' class='btn btn-primary'>Submit</button>
+			    </div>
+			    <div class='col-1 offset-1'>
+				<button type='reset' class='btn btn-secondary'>Reset</button>
+			    </div>
+			</div>
 		    </form>
 		</div>
 	    </div>
