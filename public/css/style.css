@@ -1,3 +1,8 @@
 body {
-    background: #879;
+    background: lightblue;
 }
+
+img {
+    max-height: 400px;
+}
+
