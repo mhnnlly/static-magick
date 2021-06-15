@@ -83,7 +83,7 @@ class App extends React.Component {
     
     render() {
 	let srcURL = this.state.srcURL
-	let filterURL = 'http://localhost:8080/magick?src=' +
+	let filterURL = window.location.href + 'magick?src=' +
 			this.state.srcURL + this.state.filterParams
 	return (
 	    <div class='container'>

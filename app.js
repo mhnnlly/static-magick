@@ -4,31 +4,25 @@ const port = inProduction ? process.env.PROD_PORT : process.env.DEV_PORT
 
 const express = require('express')
 const app = express()
+const fs = require('fs')
+const https = require('https')
 const path = require('path')
-const winston = require('winston')
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use('/public', express.static('public'))
 
-const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.json(),
-    defaultMeta: { service: 'user-service' },
-    transports: [
-	new winston.transports.File({ filename: 'error.log', level: 'error' }),
-	new winston.transports.File({ filename: 'combined.log' })
-    ]
-})
-if (!inProduction) {
-    logger.add(new winston.transports.Console({
-	format: winston.format.simple()
-    }))
-}
-
 app.use('/', require('./routes/index'))
 app.use('/magick', require('./routes/magick'))
 
-app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}`)
-})
+if (inProduction) {
+    const privKey = fs.readFileSync(process.env.KEY_PATH, 'utf8')
+    const certificate = fs.readFileSync(process.env.CERT_PATH, 'utf8')
+    const credentials = {key: privKey, cert: certificate}
+    httpsServer = https.createServer(credentials, app)
+    httpsServer.listen(port)
+} else {
+    app.listen(port, () => {
+	console.log(`Listening at port: ${port}`)
+    })
+}
