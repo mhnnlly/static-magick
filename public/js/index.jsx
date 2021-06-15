@@ -217,11 +217,6 @@ class App extends React.Component {
 			</div>
 			<div class='row'>
 			    <div class='form-group col-3'>
-				<label>Draw Edges:</label>
-				<input class='form-control' onChange={this.handleChange} type='number'
-				       name='edge' />
-			    </div>
-			    <div class='form-group col-3'>
 				<label>Emboss:</label>
 				<input class='form-control' onChange={this.handleChange} type='number'
 				       name='emboss' />
