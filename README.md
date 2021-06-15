@@ -11,11 +11,11 @@ API requests, please use the interactive UI at ```static.mhennelly.com```.
 
 Original at ```mhennelly.com/umbrella.jpg```
 
-<img src='https://mhennelly.com/umbrella.jpg' width='100px' alt='Source Image Missing'/>
+<img src='https://mhennelly.com/umbrella.jpg' width='300px' alt='Source Image Missing'/>
 
 Edit at ```mhennelly.com/src=https://mhennelly.com/umbrella.jpg&negative```
 
-<img src='https://static.mhennelly.com/magick?src=https://mhennelly.com/umbrella.jpg&negative' width='100px' alt='Source Image Missing'/>
+<img src='https://static.mhennelly.com/magick?src=https://mhennelly.com/umbrella.jpg&negative' width='300px' alt='Source Image Missing'/>
 
 ## Usage
 
