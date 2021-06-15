@@ -1,9 +1,52 @@
 # Static Magick
 
-A Graphics Magick API for static image files.
+Static Magick is a Web API for applying Graphics Magick filters
+to publicly available static images. The service is available
+at ```static.mhennelly.com/magick```. To help with constructing
+API requests, please use the interactive UI at ```static.mhennelly.com```.
 
-## API
+## Demo
 
-Path: /magick
-Parameters:
-	TBD
+<div style='display:inline-block;'>
+<figure style='float:left;'>
+	<img src='https://images.unsplash.com/photo-1614914135224-925593607248?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8' width='100px' alt='Source Image Missing'/>
+	<figcaption>Cool Sunset From Unsplash</figcaption>
+</figure>
+
+<figure style='float:left;'>
+	<img src='https://static.mhennelly.com/magick?src=https://images.unsplash.com/photo-1614914135224-925593607248?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&negative' width='100px' alt='Source Image Missing'/>
+	<figcaption>Even Cooler Negative Of The Sunset From Unsplash</figcaption>
+</figure>
+</div>
+
+## Usage
+
+1. Get the absolute URL of the static image you'd like to edit,
+an example would be ```https://mhennelly.com/me.jpg```
+2. Add the URL as the query parameter ```src```, so for the
+previous example the request becomes ```static.mhennelly.com/magick?src=https://mhennelly.com/me.jpg```
+3. Add the edits you'd like to make as additional parameters. For example, to add a brown
+border around the image we can request 
+```static.mhennelly.com/magick?src=https://mhennelly.com/me.jpg&borderColor=Brown&border=10,10```
+
+## API Documentation
+
+- *src=url* : The absolute URL of the static image
+- *blur=radius,sigma* : Take Gaussian blur with radius and std. dev. specified
+- *border=x,y* : Add border with dimensions specified
+- *borderColor=color* : Specificy border color, be applied before border & be a known color to
+GraphicsMagick
+- *charcoal=factor* : Apply charcoal filter
+- *colorize=r,g,b* : Edit the color channels of the image
+- *colors=limit* : Specify an integer upper limit to the number of colors that can be used
+- *contrast=factor* : Increase the image contrast
+- *cycle=factor* : Cycle the colors
+- *edge=factor* : Draw the edges of the image, higher the factor the more edges
+- *emboss=factor* : Add an emboss effect
+- *negative* : Take the negative of the image
+
+## Acknowledgements
+
+Couldn't have made this API without the fantastic module [gm](https://aheckmann.github.io/gm/).
+Great tool, makes interfacing with GraphicsMagick ezpz.
+
