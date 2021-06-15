@@ -9,17 +9,13 @@ API requests, please use the interactive UI at ```static.mhennelly.com```.
 
 *Source of image: https://unsplash.com/photos/z50C7LRN4_Y*
 
-<div style='display:inline-block;'>
-<figure style='float:left;'>
-	<img src='https://mhennelly.com/umbrella.jpg' width='100px' alt='Source Image Missing'/>
-	<figcaption>mhennelly.com/umbrella.jpg</figcaption>
-</figure>
+Original at ```mhennelly.com/umbrella.jpg```
 
-<figure style='float:left;'>
-	<img src='https://static.mhennelly.com/magick?src=https://mhennelly.com/umbrella.jpg&negative' width='100px' alt='Source Image Missing'/>
-	<figcaption>static.mhennelly.com/magick?src=https://mhennelly.com/umbrella.jpg&negative</figcaption>
-</figure>
-</div>
+<img src='https://mhennelly.com/umbrella.jpg' width='100px' alt='Source Image Missing'/>
+
+Edit at ```mhennelly.com/src=https://mhennelly.com/umbrella.jpg&negative```
+
+<img src='https://static.mhennelly.com/magick?src=https://mhennelly.com/umbrella.jpg&negative' width='100px' alt='Source Image Missing'/>
 
 ## Usage
 
