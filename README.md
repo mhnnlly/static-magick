@@ -2,8 +2,10 @@
 
 Static Magick is a Web API for applying Graphics Magick filters
 to publicly available static images. The service is available
-at ```static.mhennelly.com/magick```. To help with constructing
-API requests, please use the interactive UI at ```static.mhennelly.com```.
+at ```static.mhennelly.com/magick```.
+
+Also here's a [form-based UI written in React](https://static.mhennelly.com) to
+make constructing requests easier.
 
 ## Demo
 
