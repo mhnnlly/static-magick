@@ -11,7 +11,7 @@ make constructing requests easier.
 
 *Source of image: https://unsplash.com/photos/z50C7LRN4_Y*
 
-Original, publicly available static image at [mhennelly.com/public/img/umbrella.jpg](https://mhennelly.com/umbrella.jpg)
+Original, publicly available static image at [mhennelly.com/public/img/umbrella.jpg](https://mhennelly.com/public/img/umbrella.jpg)
 
 <img src='https://mhennelly.com/public/img/umbrella.jpg' width='300px' alt='Source Image Missing'/>
 
