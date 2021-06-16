@@ -11,23 +11,24 @@ make constructing requests easier.
 
 *Source of image: https://unsplash.com/photos/z50C7LRN4_Y*
 
-Original at ```mhennelly.com/public/img/umbrella.jpg```
+Original, publicly available static image at [mhennelly.com/public/img/umbrella.jpg](https://mhennelly.com/umbrella.jpg)
 
-<img src='https://mhennelly.com/umbrella.jpg' width='300px' alt='Source Image Missing'/>
+<img src='https://mhennelly.com/public/img/umbrella.jpg' width='300px' alt='Source Image Missing'/>
 
-Edit at ```static.mhennelly.com/magick?src=https://mhennelly.com/img/umbrella.jpg&negative```
+New negative edit of the image which is also publicly available at
+[static.mhennelly.com/magick?src=https://mhennelly.com/public/img/umbrella.jpg&negative](https://static.mhennelly.com/magick?src=https://mhennelly.com/public/img/umbrella.jpg&negative)
 
-<img src='https://static.mhennelly.com/magick?src=https://mhennelly.com/umbrella.jpg&negative' width='300px' alt='Source Image Missing'/>
+<img src='https://static.mhennelly.com/magick?src=https://mhennelly.com/public/img/umbrella.jpg&negative' width='300px' alt='Source Image Missing'/>
 
 ## Usage
 
 1. Get the absolute URL of the static image you'd like to edit,
-an example would be ```https://mhennelly.com/me.jpg```
+an example would be ```https://mhennelly.com/public/img/umbrella.jpg```
 2. Add the URL as the query parameter ```src```, so for the
-previous example the request becomes ```static.mhennelly.com/magick?src=https://mhennelly.com/me.jpg```
+previous example the request becomes ```static.mhennelly.com/magick?src=https://mhennelly.com/public/img/umbrella.jpg```
 3. Add the edits you'd like to make as additional parameters. For example, to add a brown
 border around the image we can request 
-```static.mhennelly.com/magick?src=https://mhennelly.com/me.jpg&borderColor=Brown&border=10,10```
+```static.mhennelly.com/magick?src=https://mhennelly.com/public/img/umbrella.jpg&borderColor=Brown&border=10,10```
 
 ## API Documentation
 
