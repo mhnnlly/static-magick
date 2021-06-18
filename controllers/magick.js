@@ -28,7 +28,24 @@ const filters = {
     'edge': (img, args) => img.edge(args[0]),
     'emboss': (img, args) => img.emboss(args[0]),
     'enhance': (img, args) => img.enhance(),
-    'negative': (img, args) => img.negative()   
+    'implode': (img, args) => img.implode(args[0]),
+    'lower': (img, args) => img.lower(args[0], args[1]),
+    'monochrome': (img, args) => img.monochrome(),
+    'motionBlur': (img, args) => img.motionBlur(args[0],args[1],args[2]),
+    'negative': (img, args) => img.negative(),
+    'paint': (img, args) => img.paint(args[0]),
+    'raise': (img, args) => img.raise(args[0], args[1]),
+    'roll': (img, args) => img.roll(args[0], args[1]),
+    'rotate': (img, args) => img.rotate(args[0], args[1]),
+    'sepia': (img, args) => img.sepia(),
+    'shade': (img, args) => img.shade(args[0], args[1]),
+    'sharpen': (img, args) => img.sharpen(args[0], args[1]),
+    'shear': (img, args) => img.shear(args[0], args[1]),
+    'solarize': (img, args) => img.solarize(args[0]),
+    'spread': (img, args) => img.spread(args[0]),
+    'swirl': (img, args) => img.swirl(args[0]),
+    'type': (img, args) => img.type(args[0]),
+    'wave': (img, args) => img.wave(args[0], args[1])
 }
 
 function hash (str) {
