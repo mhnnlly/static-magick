@@ -4,7 +4,7 @@ class App extends React.Component {
     constructor(props) {
 	super(props)
 	this.state = {srcURL: props.srcURL,
-		      filterParams: '&negative'}
+		      filterParams: '&contrast=4&implode=1.2&paint=9&swirl=-240'}
 	this.handleChange = this.handleChange.bind(this)
 	this.handleSubmit = this.handleSubmit.bind(this)
 	this.resetFilters = this.resetFilters.bind(this)
@@ -437,8 +437,8 @@ class App extends React.Component {
 				</div>
 				<div class='form-group col-3'>
 				    <label>Implode:</label>
-				    <input class='form-control' onChange={this.handleChange} type='number'
-					   name='implode' />
+				    <input class='form-control' onChange={this.handleChange}
+					   type='number' step='0.01' name='implode' />
 				</div>
 			    </div>
 			    <div class='row'>
