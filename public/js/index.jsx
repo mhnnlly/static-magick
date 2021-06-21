@@ -155,7 +155,7 @@ class App extends React.Component {
 	    <div class='container'>
 		<br/>
 		<div class='row'>
-		    <h1>Static Magick</h1>
+		    <h1>StaticMagick</h1>
 		    <p>Documentation of API <a href='http://github.com/mhennelly/static-magick'>here</a></p>
 		</div>
 		<div class='row'>
@@ -182,7 +182,17 @@ class App extends React.Component {
 					  role='status' aria-hidden='true'></div>
 				 </div>
 				 : <figcaption class='figure-caption'><a href={filterURL}>{filterURL}
-								      </a></figcaption>
+								      </a><br/><br/>
+
+				       With StaticMagick you can easily apply filters to publicly
+				       available static images without needing to download them first.
+				       Using this web API you can apply GraphicsMagick edits through
+				       HTTP requests in your browser, or you can embed these new
+				       images in your own website by using the
+				       URL destination as the source. I'd advise you use the latter
+				       case for prototyping purposes only, and then if you want to
+				       permanently use the image edits you should download them.
+				   </figcaption>
 				}
 			    </figure>
 			</div>
