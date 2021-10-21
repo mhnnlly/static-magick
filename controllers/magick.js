@@ -7,7 +7,7 @@ const path = require('path')
 const {promisify} = require('util')
 const url = require('url')
 
-const extensions = ['image/jpg', 'image/png', 'image/jpeg', 'image/x-icon', 'image/ico', 'image/icon']
+const extensions = ['image/jpg', 'image/png', 'image/jpeg']
 const byteLimit = 3 * 1000 * 1000 // 3 MB
 const timeToExpire = 5 * 60 * 1000 // 5 Minutes
 
