@@ -11,14 +11,10 @@ make constructing requests easier.
 
 *Source of image: https://unsplash.com/photos/z50C7LRN4_Y*
 
-Original, publicly available static image at [mhennelly.com/public/img/umbrella.jpg](https://mhennelly.com/public/img/umbrella.jpg)
+Original image at [mhennelly.com/public/img/umbrella.jpg](https://mhennelly.com/public/img/umbrella.jpg)
 
-<img src='https://mhennelly.com/public/img/umbrella.jpg' width='300px' alt='Source Image Missing'/>
-
-New negative edit of the image which is also publicly available at
+Negative of the image available at
 [static.mhennelly.com/magick?src=https://mhennelly.com/public/img/umbrella.jpg&negative](https://static.mhennelly.com/magick?src=https://mhennelly.com/public/img/umbrella.jpg&negative)
-
-<img src='https://static.mhennelly.com/magick?src=https://mhennelly.com/public/img/umbrella.jpg&negative' width='300px' alt='Source Image Missing'/>
 
 ## Usage
 
