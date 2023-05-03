@@ -15,8 +15,8 @@ Original image at [mhennelly.com/public/img/umbrella.jpg](https://mhennelly.com/
 Swirl/paint edit of the image:
 [https://static.mhennelly.com/magick?src=http://mhennelly.com/public/img/umbrella.jpg&contrast=4&implode=1.2&paint=9&swirl=-240](https://static.mhennelly.com/magick?src=http://mhennelly.com/public/img/umbrella.jpg&contrast=4&implode=1.2&paint=9&swirl=-240)
 
-By building the web API with HTTP/GET & query-params, this makes the edited images embeddable. An example of how the embedded edits can be
-used is available at [mhennelly.com](https://www.mhennelly.com).
+The web API was designed with HTTP/GET & query-params instead of HTTP/POST because HTTP/GET makes the edited images easy to embed.
+An example of how the embedded edits can be used is available at [mhennelly.com](https://www.mhennelly.com).
 
 ## Usage
 
