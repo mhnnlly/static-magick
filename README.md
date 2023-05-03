@@ -13,8 +13,8 @@ make constructing requests easier.
 
 Original image at [mhennelly.com/public/img/umbrella.jpg](https://mhennelly.com/public/img/umbrella.jpg)
 
-Negative of the image available at
-[static.mhennelly.com/magick?src=https://mhennelly.com/public/img/umbrella.jpg&negative](https://static.mhennelly.com/magick?src=https://mhennelly.com/public/img/umbrella.jpg&negative)
+Example edit of the image:
+[https://static.mhennelly.com/magick?src=http://mhennelly.com/public/img/umbrella.jpg&contrast=4&implode=1.2&paint=9&swirl=-240](https://static.mhennelly.com/magick?src=http://mhennelly.com/public/img/umbrella.jpg&contrast=4&implode=1.2&paint=9&swirl=-240)
 
 ## Usage
 
