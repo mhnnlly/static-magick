@@ -16,7 +16,7 @@ Swirl/paint edit of the image:
 [https://static.mhennelly.com/magick?src=http://mhennelly.com/public/img/umbrella.jpg&contrast=4&implode=1.2&paint=9&swirl=-240](https://static.mhennelly.com/magick?src=http://mhennelly.com/public/img/umbrella.jpg&contrast=4&implode=1.2&paint=9&swirl=-240)
 
 By building the web API with HTTP/GET & query-params, this makes the edited images embeddable. An example of how the embedded edits can be
-used is available at [https://www.mhennelly.com](mhennelly.com).
+used is available at [mhennelly.com](https://www.mhennelly.com).
 
 ## Usage
 
